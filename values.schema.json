@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "global": {
+      "description": "Global configuration for the SyftBox client",
+      "type": "object",
+      "properties": {
+        "version": {
+          "description": "Sync server URL",
+          "type": "string"
+        }
+      }
+    },
+    "server": {
+      "description": "Server configuration",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Server name",
+          "type": "string",
+          "default": ""
+        },
+        "rootEmail": {
+          "description": "Root email",
+          "type": "string",
+          "default": "info@openmined.org"
+        },
+        "type": {
+          "description": "Server type",
+          "type": "string",
+          "enum": ["datasite", "network"],
+          "default": "datasite"
+        },
+        "side": {
+          "description": "Server side",
+          "type": "string",
+          "enum": ["high", "low"],
+          "default": "high"
+        },
+        "defaultBucketName": {
+          "description": "Default bucket name",
+          "type": "string",
+          "default": ""
+        },
+        "inMemoryWorkers": {
+          "description": "Use in-memory workers",
+          "type": "boolean",
+          "default": false
+        },
+        "logLevel": {
+          "description": "Log level",
+          "type": "string",
+          "enum": ["debug", "info", "warning", "error", "critical"],
+          "default": "info"
+        },
+        "resourcesPreset": {
+          "description": "Resource preset for server",
+          "type": "string",
+          "enum": ["nano", "small", "medium", "large", "xlarge"],
+          "default": "xlarge"
+        },
+        "secret": {
+          "description": "Default/custom secret raw values",
+          "type": "object",
+          "properties": {
+            "defaultRootPassword": {
+              "description": "Default root password",
+              "type": "string",
+              "default": "",
+              "x-form": {
+                "value": "{{project.password}}"
+              },
+              "x-onyxia": {
+                "overwriteDefaultWith": "{{project.password}}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "postgres": {
+      "type": "object"
+    },
+    "frontend": {
+      "type": "object"
+    },
+    "seaweedfs": {
+      "type": "object"
+    },
+    "proxy": {
+      "type": "object"
+    },
+    "registry": {
+      "type": "object"
+    },
+    "ingress": {
+      "type": "object"
+    },
+    "rtunnel": {
+      "type": "object"
+    },
+    "attestation": {
+      "type": "object"
+    },
+    "extraResources": {
+      "type": "array"
+    }
+  }
+}
